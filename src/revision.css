@@ -1,0 +1,87 @@
+:root{--paper:#fff}
+.language-switch{display:flex;gap:10px;align-items:center;margin-left:28px;padding-left:26px;border-left:1px solid var(--ink);font:9px 'DM Mono',monospace;letter-spacing:.08em}
+.language-switch a{color:var(--mute)}
+.language-switch a.active{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.home-intro,.exhibition-feature{grid-template-columns:50% 50%}
+.home-intro{min-height:calc(100svh - 78px)}
+.home-intro>div{order:1}
+.home-intro>figure{order:2}
+.home-intro figure img{object-position:center}
+.exhibition-feature figure{min-height:620px}
+.page-title{padding:28px 3vw 25px;background:#fff;color:var(--ink);border-bottom:1px solid var(--ink)}
+.page-title h1{margin:0;font:400 clamp(34px,3.4vw,54px)/1 'Libre Baskerville',serif;letter-spacing:-.05em}
+.page-title .label,.page-title>p:not(.label){display:none}
+.works-page{padding-top:0}
+.works-page .tools{padding:30px max(3vw,calc((100vw - 1540px)/2)) 17px}
+.archive-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:62px 24px;max-width:1540px;margin:0 auto;padding:48px 3vw 120px;border:0}
+.archive-grid .photo-card{padding:0;border:0;background:#fff}
+.archive-grid .photo-card figure{height:16vw;max-height:245px;min-height:170px;padding:0;background:#ddd}
+.archive-grid .photo-card img{width:100%;height:100%;object-fit:contain}
+.archive-grid .photo-card p{margin:15px 0 12px;font-size:11px}
+.archive-grid .photo-card h3{margin:0;font:400 18px/1.35 'Libre Franklin',sans-serif}
+.archive-grid .photo-card:hover img{transform:none}
+.available{padding-top:62px}
+.available>div:first-child{max-width:none;margin:0 9% 36px}
+.available>div:first-child h2{margin:12px 0 0;font:400 clamp(22px,2.2vw,34px)/1.15 'Libre Baskerville',serif;letter-spacing:-.04em}
+.documentation{padding-top:0}
+.subnav{height:52px;padding:0 3vw;border-bottom:1px solid var(--ink);display:flex;align-items:center;gap:35px}
+.subnav button{border:0;padding:0;background:none;color:var(--mute);font:10px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.subnav button.active{color:var(--ink);text-decoration:underline;text-underline-offset:5px}
+.doc-grid{padding-top:54px}
+.doc-grid article[hidden]{display:none}
+@media(max-width:760px){
+ .language-switch{gap:7px;margin-left:10px;padding-left:9px;font-size:8px}
+ .home-intro,.exhibition-feature{display:flex;flex-direction:column}
+ .home-intro>div{order:1}
+ .home-intro>figure{order:2;height:58svh}
+ .exhibition-feature figure{min-height:0;height:55svh}
+ .archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 15px;padding:35px 18px 80px}
+ .archive-grid .photo-card figure{height:38vw;min-height:0;padding:0}
+ .archive-grid .photo-card h3{font-size:14px}
+ .page-title{padding:23px 20px}
+ .page-title h1{font-size:36px}
+ .subnav{padding:0 20px}
+}
+.home-intro{grid-template-columns:36% 64%;height:calc(100svh - 78px);min-height:calc(100svh - 78px);max-height:none}
+.home-intro>figure{background:#111;overflow:hidden}
+.home-intro>figure img{object-fit:cover;object-position:62% center}
+.exhibition-feature{grid-template-columns:50% 50%;height:calc(100svh - 78px);min-height:calc(100svh - 78px)}
+.exhibition-feature figure{height:100%;min-height:0}
+.selection{position:relative;padding:30px 5.5vw 45px}
+.selection .rail{grid-auto-columns:calc((100% - 60px)/4);gap:20px}
+.selection .photo-card figure{height:20vw;max-height:340px;background:#e5e5e1}
+.selection .photo-card p,.selection .photo-card h3{display:none}
+.selection .rail-arrow{position:absolute;z-index:2;top:50%;width:38px;height:56px;border:0;background:rgba(255,255,255,.88);font-size:23px;cursor:pointer;transform:translateY(-50%)}
+.selection .rail-arrow-left{left:1.2vw}
+.selection .rail-arrow-right{right:1.2vw}
+.editorial-detail{padding:38px 4vw 110px;background:#fff}
+.editorial-detail>.back{margin-bottom:38px}
+.editorial-hero{display:grid;grid-template-columns:1fr 1fr;min-height:610px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.editorial-hero figure{margin:0;padding:5vw;background:#e5e5e1}
+.editorial-hero figure img{width:100%;height:100%;object-fit:contain}
+.editorial-hero>div{padding:clamp(55px,8vw,125px);align-self:center}
+.editorial-hero h1{margin:17px 0 27px;font:400 clamp(42px,5.2vw,80px)/.94 'Libre Baskerville',serif;letter-spacing:-.065em}
+.editorial-hero .lead{font:18px/1.6 'Libre Baskerville',serif}
+.editorial-hero dl{margin:35px 0 0;border-top:1px solid var(--ink)}
+.editorial-hero dl>div{padding:13px 0;border-bottom:1px solid var(--line)}
+.exhibition-detail-hero{grid-template-columns:1.15fr .85fr}
+.exhibition-detail-hero figure{padding:3vw}
+.exhibition-detail-hero figure img{object-fit:cover}
+.editorial-detail>article{max-width:690px;margin:0 auto;padding:80px 24px 0;font:19px/1.72 'Libre Baskerville',serif}
+.editorial-detail>article p{margin:0 0 27px}
+@media(max-width:760px){
+ .home-intro{height:auto;max-height:none;min-height:0}
+ .home-intro>figure img{object-fit:cover}
+ .exhibition-feature{height:auto;min-height:0}
+ .selection{padding:22px 45px 30px}
+ .selection .rail{grid-auto-columns:82%;gap:15px}
+ .selection .photo-card figure{height:61vw}
+ .selection .rail-arrow-left{left:5px}
+ .selection .rail-arrow-right{right:5px}
+ .editorial-detail{padding:28px 20px 75px}
+ .editorial-hero{display:block;min-height:0}
+ .editorial-hero figure{height:58svh;padding:35px}
+ .editorial-hero>div{padding:45px 5px 55px}
+ .editorial-hero h1{font-size:43px}
+ .editorial-detail>article{padding:55px 5px 0;font-size:17px}
+}
