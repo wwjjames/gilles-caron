@@ -1,9 +1,17 @@
 import { html } from "../lib/html";
-import { photos } from "../data/photos";
-import { photoCard } from "../components/photo-card";
+import { homePhotos } from "../data/gallery";
+import { exhibitionStatus, featuredExhibition } from "../data/exhibitions";
+import { justifiedGallery, mountJustifiedGallery, type GalleryOptions } from "../components/justified-gallery";
+
+// Four photographs ticked "home" in the gallery: one row on desktop, no captions;
+// clicking anywhere on them opens the Archive.
+const options: GalleryOptions = { id: "home-gallery", targetHeight: 320, mobileTargetHeight: 170, desktopRows: 1, captions: false, href: "#archive" };
 
 // → front-page.php
-export const render = () => html`
+export const render = () => {
+  const x = featuredExhibition();
+  const label = exhibitionStatus(x) === "current" ? "Current exhibition" : exhibitionStatus(x) === "upcoming" ? "Forthcoming exhibition" : "Recent exhibition";
+  return html`
   <main>
     <section class="home-intro">
       <div>
@@ -13,36 +21,17 @@ export const render = () => html`
       </div>
       <figure><img src="/assets/gilles-caron-portrait-v2.png" alt="Gilles Caron holding a camera"></figure>
     </section>
-    <a class="exhibition-feature" href="#exhibition/detail">
-      <figure><img src="/assets/mock-exhibition.png" alt="Exhibition view"></figure>
+    <a class="exhibition-feature" href="#exhibition/${x.slug}">
+      <figure><img src="${x.image}" alt="${x.title}"></figure>
       <div>
-        <p class="label">Current / forthcoming exhibition</p>
-        <h2>Gilles Caron:<br>The Returning Image</h2>
-        <p>Maison de la Photographie · Paris<br>12 Sep — 24 Nov 2026</p>
+        <p class="label">${label}</p>
+        <h2>${x.title}</h2>
+        <p>${x.venue} · ${x.city}<br>${x.dates}</p>
         <span class="link">View exhibition ↗</span>
       </div>
     </a>
-    <section class="selection">
-      <button class="rail-arrow rail-arrow-left" id="prev" aria-label="Previous photographs">←</button>
-      <div class="rail" id="rail">${photos.map(p => photoCard(p)).join("")}</div>
-      <button class="rail-arrow rail-arrow-right" id="next" aria-label="Next photographs">→</button>
-    </section>
+    <section class="selection">${justifiedGallery(homePhotos, options)}</section>
   </main>`;
-
-// The right arrow scrolls once, then opens the Archive; the left arrow resets the count.
-export const mount = () => {
-  const rail = document.querySelector<HTMLElement>("#rail")!;
-  let nextClicks = 0;
-  document.querySelector("#next")?.addEventListener("click", () => {
-    nextClicks++;
-    if (nextClicks >= 2) {
-      location.hash = "archive";
-      return;
-    }
-    rail.scrollBy({ left: rail.clientWidth * 0.9, behavior: "smooth" });
-  });
-  document.querySelector("#prev")?.addEventListener("click", () => {
-    nextClicks = 0;
-    rail.scrollBy({ left: -rail.clientWidth * 0.9, behavior: "smooth" });
-  });
 };
+
+export const mount = () => mountJustifiedGallery(homePhotos, options);

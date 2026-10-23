@@ -1,27 +1,24 @@
 import { html } from "../lib/html";
-import { photos } from "../data/photos";
-import { photoCard } from "../components/photo-card";
+import { archivePhotos, mppUrl } from "../data/gallery";
+import { justifiedGallery, mountJustifiedGallery, type GalleryOptions } from "../components/justified-gallery";
 
-// → archive-photo.php. Display only: no prices, availability or purchase links.
+const options: GalleryOptions = { id: "archive-gallery", targetHeight: 360, mobileTargetHeight: 200, captions: true };
+
+// → page-archive.php. A weekly selection of 10 view-only photographs from the gallery;
+// consultation of the collection itself is referred to the MPP.
 export const render = () => html`
   <main class="page works-page">
-    <div class="tools">
-      <label>Search<input id="search" placeholder="Title, place or reference"></label>
-      <small id="count"></small>
-    </div>
-    <section class="archive-grid" id="grid">${photos.map(p => photoCard(p, false, true)).join("")}</section>
+    <section class="archive-intro">
+      <div>
+        <p class="label">This week’s selection · ${archivePhotos.length} photographs</p>
+        <p class="archive-lead">Each week, ten photographs from the archive are shown here for viewing only. They cannot be downloaded.</p>
+      </div>
+      <div class="archive-mpp">
+        <p>The Gilles Caron collection is held by the Médiathèque du patrimoine et de la photographie (MPP). Researchers, art historians and institutions wishing to consult the photographs are invited to contact the MPP.</p>
+        <a class="link" href="${mppUrl}" target="_blank" rel="noopener">Consult the collection at the MPP ↗</a>
+      </div>
+    </section>
+    <section class="archive-gallery">${justifiedGallery(archivePhotos, options)}</section>
   </main>`;
 
-export const mount = () => {
-  const input = document.querySelector<HTMLInputElement>("#search")!;
-  const grid = document.querySelector<HTMLElement>("#grid")!;
-  const count = document.querySelector<HTMLElement>("#count")!;
-  const update = () => {
-    const query = input.value.toLowerCase();
-    const list = photos.filter(p => Object.values(p).join(" ").toLowerCase().includes(query));
-    grid.innerHTML = list.map(p => photoCard(p, false, true)).join("");
-    count.textContent = `${list.length} photographs`;
-  };
-  input.addEventListener("input", update);
-  update();
-};
+export const mount = () => mountJustifiedGallery(archivePhotos, options);

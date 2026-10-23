@@ -1,5 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=Libre+Franklin:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 :root {
+  /* Helvetica Neue as installed on the visitor's system (Apple devices); embedding it
+     as a web font needs a web licence. Other systems fall back to Helvetica / Arial. */
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Header: logo height plus the 10 mm clear space required above and below it. */
+  --logo-h: 44px;
+  --logo-clear: 10mm;
+  --header-h: calc(var(--logo-h) + 2 * var(--logo-clear));
   --ink: #111;
   --paper: #f7f7f5;
   --ash: #deded9;
@@ -16,7 +22,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "Libre Franklin", sans-serif;
+  font-family: var(--font);
 }
 a {
   color: inherit;
@@ -30,27 +36,18 @@ img {
 .label,
 small {
   font:
-    10px/1.45 "DM Mono",
-    monospace;
+    10px/1.45 var(--font);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .mark {
   font:
-    600 15px/0.73 "Libre Franklin",
-    sans-serif;
+    600 15px/0.73 var(--font);
   letter-spacing: 0.09em;
 }
-.mark i {
-  font:
-    400 10px/1 "DM Mono",
-    monospace;
-  letter-spacing: 0.24em;
-  font-style: normal;
-}
 header {
-  height: 78px;
-  padding: 0 3vw;
+  height: var(--header-h);
+  padding: 0 3vw 0 var(--logo-clear);
   border-bottom: 1px solid var(--ink);
   display: flex;
   align-items: center;
@@ -76,7 +73,7 @@ nav a:hover,
 .home-intro {
   display: grid;
   grid-template-columns: 51% 49%;
-  min-height: calc(100svh - 78px);
+  min-height: calc(100svh - var(--header-h));
 }
 .home-intro figure,
 .home-intro figure img {
@@ -96,11 +93,10 @@ nav a:hover,
   left: 18px;
   color: #fff;
   font:
-    9px "DM Mono",
-    monospace;
+    9px var(--font);
 }
 .home-intro > div {
-  padding: clamp(50px, 9vw, 150px) clamp(30px, 8vw, 130px);
+  padding: clamp(40px, 7svh, 110px) clamp(30px, 8vw, 130px);
   background: #111;
   color: var(--paper);
   display: flex;
@@ -113,8 +109,7 @@ nav a:hover,
 .detail h1 {
   margin: 20px 0 26px;
   font:
-    400 clamp(54px, 7.1vw, 118px) / 0.86 "Libre Baskerville",
-    serif;
+    400 clamp(54px, 7.1vw, 118px) / 0.86 var(--font);
   letter-spacing: -0.08em;
 }
 .home-intro h1 em,
@@ -124,8 +119,7 @@ nav a:hover,
 .home-intro > div > p:not(.label) {
   max-width: 375px;
   font:
-    18px/1.56 "Libre Baskerville",
-    serif;
+    18px/1.56 var(--font);
 }
 .link {
   display: inline-block;
@@ -133,8 +127,7 @@ nav a:hover,
   border-bottom: 1px solid currentColor;
   padding-bottom: 4px;
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -158,46 +151,21 @@ nav a:hover,
   align-self: center;
 }
 .exhibition-feature h2,
-.selection h2,
 .bio h2,
 .available h2,
-.exhibitions h2,
 .doc-grid h2 {
   margin: 20px 0;
   font:
-    400 clamp(30px, 3.4vw, 57px) / 1.03 "Libre Baskerville",
-    serif;
+    400 clamp(30px, 3.4vw, 57px) / 1.03 var(--font);
   letter-spacing: -0.05em;
 }
 .exhibition-feature > div > p:not(.label) {
   font:
-    16px/1.65 "Libre Baskerville",
-    serif;
+    16px/1.65 var(--font);
 }
 .selection {
   padding: 75px 3vw 105px;
   background: var(--paper);
-}
-.rail-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 22px;
-}
-.rail-head button {
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--ink);
-  background: transparent;
-  font-size: 19px;
-  cursor: pointer;
-}
-.rail {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 3px) / 4);
-  gap: 1px;
-  overflow: hidden;
 }
 .photo-card {
   background: var(--paper);
@@ -225,8 +193,7 @@ nav a:hover,
 .photo-card h3 {
   margin: 0;
   font:
-    400 17px/1.25 "Libre Baskerville",
-    serif;
+    400 17px/1.25 var(--font);
 }
 .photo-card small {
   display: block;
@@ -252,58 +219,7 @@ nav a:hover,
 .page-title > p:not(.label) {
   max-width: 450px;
   font:
-    18px/1.55 "Libre Baskerville",
-    serif;
-}
-.tools {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  padding: 35px 3vw 18px;
-  border-bottom: 1px solid var(--ink);
-}
-.tools label {
-  font:
-    10px "DM Mono",
-    monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.tools input {
-  display: block;
-  width: 320px;
-  border: 0;
-  border-bottom: 1px solid var(--ink);
-  padding: 9px 0;
-  background: transparent;
-  font:
-    15px "Libre Baskerville",
-    serif;
-  outline: 0;
-}
-.archive-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border-left: 1px solid var(--line);
-}
-.archive-grid .photo-card {
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 0 0 17px;
-}
-.archive-grid .photo-card figure {
-  height: 26vw;
-  padding: 16px;
-  background: #e5e5e1;
-}
-.archive-grid .photo-card img {
-  object-fit: contain;
-}
-.archive-grid .photo-card p,
-.archive-grid .photo-card h3 {
-  margin-left: 15px;
-  margin-right: 15px;
+    18px/1.55 var(--font);
 }
 .bio {
   display: grid;
@@ -325,8 +241,7 @@ nav a:hover,
 }
 .bio > div > p:not(.label) {
   font:
-    18px/1.6 "Libre Baskerville",
-    serif;
+    18px/1.6 var(--font);
 }
 .bio dl,
 .detail dl {
@@ -340,16 +255,14 @@ nav a:hover,
 }
 dt {
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 dd {
   margin: 7px 0 0;
   font:
-    15px "Libre Baskerville",
-    serif;
+    15px var(--font);
 }
 .contact-top {
   display: grid;
@@ -363,8 +276,7 @@ dd {
 }
 .contact-top > div > p:not(.label) {
   font:
-    17px/1.55 "Libre Baskerville",
-    serif;
+    17px/1.55 var(--font);
 }
 .contact form {
   display: grid;
@@ -373,8 +285,7 @@ dd {
 }
 .contact label {
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -387,8 +298,7 @@ dd {
   padding: 9px 0;
   background: none;
   font:
-    15px "Libre Baskerville",
-    serif;
+    15px var(--font);
   outline: 0;
 }
 .contact textarea {
@@ -406,8 +316,7 @@ dd {
   background: var(--ink);
   color: var(--paper);
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -420,8 +329,7 @@ dd {
 }
 .available > div:first-child > p:not(.label) {
   font:
-    17px/1.55 "Libre Baskerville",
-    serif;
+    17px/1.55 var(--font);
 }
 .sale-grid {
   display: grid;
@@ -459,44 +367,18 @@ dd {
 }
 .doc-grid article > p {
   font:
-    14px/1.55 "Libre Baskerville",
-    serif;
+    14px/1.55 var(--font);
 }
 .doc-grid article > p:first-of-type {
   margin-bottom: 12px;
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
 }
 .doc-grid small {
   font-size: 9px;
 }
 .doc-grid h2 {
   font-size: 23px;
-}
-.exhibitions {
-  padding: 75px 12% 120px;
-}
-.exhibitions > a {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 8vw;
-  padding: 0 0 70px;
-  margin-bottom: 70px;
-  border-bottom: 1px solid var(--line);
-}
-.exhibitions img {
-  width: 100%;
-  height: 430px;
-  object-fit: cover;
-}
-.exhibitions div {
-  align-self: center;
-}
-.exhibitions div > p:not(.label) {
-  font:
-    16px/1.6 "Libre Baskerville",
-    serif;
 }
 .detail {
   padding: 55px 6vw 110px;
@@ -507,8 +389,7 @@ dd {
   border-bottom: 1px solid currentColor;
   padding-bottom: 4px;
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
   text-transform: uppercase;
 }
 .detail > section {
@@ -535,8 +416,7 @@ dd {
 }
 .detail > section > div > p:not(.label) {
   font:
-    17px/1.6 "Libre Baskerville",
-    serif;
+    17px/1.6 var(--font);
 }
 .detail small {
   display: block;
@@ -554,8 +434,7 @@ footer {
 footer h3 {
   margin: 15px 0 28px;
   font:
-    400 30px/1.2 "Libre Baskerville",
-    serif;
+    400 30px/1.2 var(--font);
 }
 .subscribe {
   display: flex;
@@ -575,8 +454,7 @@ footer h3 {
   background: transparent;
   color: #fff;
   font:
-    10px "DM Mono",
-    monospace;
+    10px var(--font);
   text-transform: uppercase;
 }
 .footer-links {
@@ -594,8 +472,7 @@ footer h3 {
   align-self: end;
   margin: 40px 0 0;
   font:
-    10px/1.6 "DM Mono",
-    monospace;
+    10px/1.6 var(--font);
   text-transform: uppercase;
 }
 .footer-links span {
@@ -641,38 +518,20 @@ footer h3 {
   .selection {
     padding: 55px 20px;
   }
-  .rail {
-    grid-auto-columns: 78%;
-  }
   .photo-card figure {
     height: 83vw;
   }
   .page-title {
     padding: 75px 25px 55px;
   }
-  .tools {
-    display: block;
-    padding: 25px 20px 15px;
-  }
-  .tools input {
-    width: 100%;
-    margin-top: 7px;
-  }
-  .tools small {
-    display: block;
-    margin-top: 15px;
-  }
-  .archive-grid,
   .sale-grid,
   .doc-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .archive-grid .photo-card figure,
   .sale-grid .photo-card figure {
     height: 57vw;
     padding: 10px;
   }
-  .archive-grid .photo-card h3,
   .sale-grid .photo-card h3 {
     font-size: 14px;
   }
@@ -708,20 +567,6 @@ footer h3 {
   }
   .doc-grid h2 {
     font-size: 20px;
-  }
-  .exhibitions {
-    padding: 55px 25px;
-  }
-  .exhibitions > a {
-    display: block;
-    margin-bottom: 45px;
-    padding-bottom: 45px;
-  }
-  .exhibitions img {
-    height: 55svh;
-  }
-  .exhibitions div {
-    margin-top: 25px;
   }
   .detail {
     padding: 35px 20px 70px;

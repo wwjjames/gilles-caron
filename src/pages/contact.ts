@@ -25,7 +25,7 @@ export const render = () => html`
         <p class="label">Selected rights</p>
         <h2>Photographs available to license.</h2>
       </div>
-      <div class="sale-grid">${photos.filter(p => p.available).map(p => photoCard(p, true)).join("")}</div>
+      <div class="sale-grid">${photos.filter(p => p.available).map(p => photoCard(p)).join("")}</div>
     </section>
   </main>`;
 

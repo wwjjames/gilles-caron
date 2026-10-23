@@ -5,16 +5,14 @@ export const render = () => html`
   <main class="page">
     <div class="page-title"><h1>Biography</h1></div>
     <section class="bio">
-      <figure><img src="/assets/gilles-caron-portrait-v2.png" alt="Gilles Caron holding a camera"></figure>
+      <figure><img src="/assets/gilles-caron-rtl-interview.jpg" alt="Gilles Caron interviewé par RTL au retour du troisième reportage au Biafra"></figure>
       <div>
-        <p class="label">A life in photographs</p>
-        <h2>A chronology<br>to be <em>confirmed.</em></h2>
-        <p>This page will hold the approved biography, timeline and career milestones.</p>
-        <dl>
-          <div><dt>1939</dt><dd>Birth and early years — pending verification</dd></div>
-          <div><dt>1960s</dt><dd>Photography and reporting practice — pending verification</dd></div>
-          <div><dt>Legacy</dt><dd>Foundation and archive record — pending verification</dd></div>
-        </dl>
+        <h2>Gilles Caron</h2>
+        <p>Mémoire visuelle d’une époque, Gilles Caron (1939-1970) a relaté par l’image la chronique des grands conflits contemporains. Il finira par payer cet engagement de sa vie, lors d’un reportage au Cambodge.</p>
+        <p>En moins de cinq années, Gilles Caron a imposé un regard d’une rare intensité sur son époque. Mai 68, la guerre des Six Jours, le Biafra, l’Irlande du Nord ou le Vietnam, mais aussi l’effervescence culturelle et politique des années 1960, composent une œuvre où se côtoient l’Histoire et la vie quotidienne, les combats d’émancipation et la guerre.</p>
+        <p>Près de soixante ans plus tard, la force de ses images demeure intacte.</p>
+        <a class="link" href="https://fr.wikipedia.org/wiki/Gilles_Caron" target="_blank" rel="noopener">Gilles Caron sur Wikipédia ↗</a>
+        <small class="bio-credit">Gilles Caron interviewé par RTL au retour du troisième reportage au Biafra</small>
       </div>
     </section>
   </main>`;

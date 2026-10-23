@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .DS_Store
+
+# Source material from the client (originals stay out of Git)
+v0.3/

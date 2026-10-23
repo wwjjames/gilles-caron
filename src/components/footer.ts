@@ -1,4 +1,6 @@
 import { html } from "../lib/html";
+import { visibleNavigation } from "../data/navigation";
+import { legalPages } from "../data/legal";
 
 // → footer.php
 export const footer = () => html`
@@ -20,11 +22,12 @@ export const footer = () => html`
       </div>
       <div>
         <p class="label">Explore</p>
-        <a href="#archive">Archive</a>
-        <a href="#biography">Biography</a>
-        <a href="#documentation">Documentation</a>
-        <a href="#exhibition">Exhibition</a>
+        ${visibleNavigation.map(n => html`<a href="#${n.route}">${n.label}</a>`).join("")}
       </div>
-      <p>© 2026 Gilles Caron Archive<br><span>Preview content — rights and factual records pending confirmation.</span></p>
+      <div>
+        <p class="label">Legal</p>
+        ${legalPages.map(l => html`<a href="#legal/${l.slug}">${l.title}</a>`).join("")}
+      </div>
+      <p>© 2026 Fondation Gilles Caron<br><span>Preview content — rights and factual records pending confirmation.</span></p>
     </section>
   </footer>`;
