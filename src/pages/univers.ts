@@ -35,7 +35,7 @@ const parution = () => html`
     <li>
       <span class="press-logo"><img src="${p.logo}" alt="${p.outlet}"></span>
       <span class="press-text">
-        <a href="${p.url}" target="_blank" rel="noopener">${p.title} ↗</a>
+        <a href="${p.url}" target="_blank" rel="noopener">${p.title}</a>
         <span class="press-meta">${p.year}${p.author ? ` · ${p.author}` : ""}</span>
       </span>
     </li>`).join("")}</ul>`;
