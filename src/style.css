@@ -2,10 +2,12 @@
   /* Helvetica Neue as installed on the visitor's system (Apple devices); embedding it
      as a web font needs a web licence. Other systems fall back to Helvetica / Arial. */
   --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* Header: logo height plus the 10 mm clear space required above and below it. */
-  --logo-h: 44px;
-  --logo-clear: 10mm;
-  --header-h: calc(var(--logo-h) + 2 * var(--logo-clear));
+  /* Brand rule: the logo is never smaller than 15 mm. Width is the logo's smaller side
+     (257 × 300 px file), so fixing it at 15 mm keeps both sides at 15 mm or more. */
+  --logo-w: 15mm;
+  --logo-h: calc(var(--logo-w) * 300 / 257);
+  --header-pad: 12px;
+  --header-h: calc(var(--logo-h) + 2 * var(--header-pad));
   --ink: #111;
   --paper: #f7f7f5;
   --ash: #deded9;
@@ -47,7 +49,7 @@ small {
 }
 header {
   height: var(--header-h);
-  padding: 0 3vw 0 var(--logo-clear);
+  padding: 0 3vw;
   border-bottom: 1px solid var(--ink);
   display: flex;
   align-items: center;

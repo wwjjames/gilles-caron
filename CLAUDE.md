@@ -49,7 +49,7 @@ npm run typecheck   # TypeScript 严格模式类型检查（tsconfig.json）
 - 延续 camelCase 函数/变量、PascalCase 类型、kebab-case CSS 类名及资源名；小改动不引入框架迁移。
 - 页面模板用 `html` 标签书写，按标签分行，文字内容不要跨行（换行会被删掉）。路由替换 `innerHTML` 后通过页面的 `mount()` 重新绑定交互事件。接入真实 CMS 数据时必须转义或使用 `textContent`，不可直接插入不可信文本。
 - 全站字体为 Helvetica Neue，统一用 CSS 变量 `--font`；不要再引入其他字体。字体文件 `v0.3/POUR JING/Document fonts/HelveticaNeue.ttc` 是 macOS 系统字体，**没有网页嵌入授权，不要放进网站**；目前依赖访客系统已安装的字体，其他系统回退到 Helvetica / Arial。
-- 页头高度由 `--logo-h` 与 `--logo-clear`（10mm 留白）计算为 `--header-h`，需要页头高度的地方都用这个变量，不要写死像素值。
+- 品牌规范：基金会 Logo **最小不得小于 15mm**（不要求四周留 10mm）。Logo 宽度固定为 `--logo-w: 15mm`（较短的一边），高度按比例计算；页头高度 `--header-h` = Logo 高度 + 上下少量留白 `--header-pad`。需要页头高度的地方都用这个变量，不要写死像素值。
 - `photoCard(p)` 只用于 Contact 售卖列表。Archive 和首页照片用 `justifiedGallery()`，必须在数据中写明每张图的 `width` / `height`。
 - 优先修改明确生效的样式，避免不断追加重复覆盖；同时检查桌面与移动端断点。
 - 文档或纯样式修改不顺带重构路由、数据模型或交易流程。
@@ -58,7 +58,7 @@ npm run typecheck   # TypeScript 严格模式类型检查（tsconfig.json）
 
 已完成的演示（v0.3）：
 
-- 全站字体 Helvetica Neue。页头左上为基金会 Logo + “Fondation Gilles Caron”，Logo 四周留 10mm 空白（手机端只显示 Logo）。
+- 全站字体 Helvetica Neue。页头左上为基金会 Logo（15mm 宽）+ 两行文字 “Fondation / Gilles Caron”，页头上下留白紧凑（桌面端约 90px 高）；手机端只显示 Logo。
 - 主导航五项 Archive、Biography、Collaboration、Univers、Exhibition；Collaboration 页面与路由已建，但 11 月上线时不显示（`navigation.ts` 中 `visible: false`），前台只显示四项。当前栏目在导航中带下划线。
 - 页脚右侧三栏并列：Contact、Explore、Legal。Legal 栏链接五个法律页面（Legal notice、Terms of use、Privacy policy、Cookie policy、Copyright & image rights），页面留空，正文在 WordPress 中填写。
 - 首页：肖像介绍（第一屏随内容增高，不溢出）、自动选取的展讯（正在进行 → 即将开始 → 最近一个）、照片库中勾选为首页的 4 张照片（桌面端一行等高，无箭头、无说明文字，点击进入 Archive）。

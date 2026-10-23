@@ -435,14 +435,17 @@ header nav a.active {
 .mark {
   display: flex;
   align-items: center;
-  gap: var(--logo-clear);
-  font: 500 15px/1.1 var(--font);
+  gap: 18px;
+  font: 500 15px/1.2 var(--font);
   letter-spacing: 0;
 }
 .mark img {
-  width: auto;
+  width: var(--logo-w);
   height: var(--logo-h);
   filter: none;
+}
+.mark span span {
+  display: block;
 }
 .footer-links {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -641,11 +644,11 @@ header nav a.active {
 
 @media (max-width: 760px) {
   :root {
-    --logo-h: 32px;
+    --header-pad: 8px;
   }
   header {
     height: var(--header-h);
-    padding: 0 16px 0 var(--logo-clear);
+    padding: 0 16px;
   }
   .mark span {
     display: none;
